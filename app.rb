@@ -14,6 +14,9 @@ end
 class Visit < ActiveRecord::Base
 end
 
+class Contact < ActiveRecord::Base
+end
+
 before do
 	@barbers = Barber.order "created_at DESC"
 end
@@ -28,7 +31,7 @@ get '/visit' do
 end
 
 post '/visit' do
-	#insert info into DB
+	#insert info into DB info about appointment
 	Visit.find_or_create_by(
 		user_name: params[:user_name],
 		phone: params[:phone],
@@ -39,5 +42,21 @@ post '/visit' do
 	@title = "Thank you!"
 	@message = Visit.all
 
+	erb :message
+end
+
+get '/contacts' do
+	erb :contacts
+end
+
+post '/contacts' do
+	#insert info into DB message from user
+	Contact.find_or_create_by(
+		user_name: params[:email],
+		date_time: params[:umessage])
+
+	@title = "Thanks for your message!"
+	@message = Contact.all
+		
 	erb :message
 end
