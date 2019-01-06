@@ -37,16 +37,16 @@ end
 
 post '/visit' do
 	#insert info into DB info about appointment:
-	c = Client.new params[:client]
+	@c = Client.new params[:client]
 	
-	if c.save #use validation in class above,if error then NO save
+	if @c.save #use validation in class above,if error then NO save
 
 		@title = "Thank you!"
 		@message = Client.all
 
 		erb :message
 	else
-		@error = c.errors.full_messages.first
+		@error = @c.errors.full_messages.first
 		erb :visit
 	end
 end
