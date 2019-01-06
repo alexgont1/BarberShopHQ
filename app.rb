@@ -46,7 +46,8 @@ post '/visit' do
 
 		erb :message
 	else
-		erb "<h2>Error!</h2>"
+		@error = c.errors.full_messages.first
+		erb :visit
 	end
 end
 
