@@ -69,5 +69,7 @@ post '/contacts' do
 end
 
 get '/barber/:id' do
+	#https://guides.rubyonrails.org/active_record_querying.html
+	@barber = Barber.find(params[:id])
 	erb :barber
 end
