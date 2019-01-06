@@ -73,3 +73,7 @@ get '/barber/:id' do
 	@barber = Barber.find(params[:id])
 	erb :barber
 end
+
+get '/bookings' do
+  erb "Hello World"
+end
