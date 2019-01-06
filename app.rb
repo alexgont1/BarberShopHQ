@@ -7,10 +7,10 @@ set :database, "sqlite3:barbershop.db"
 
 class Client < ActiveRecord::Base
 	#validation of input (using method 'save'):
-	validates :name, precence: true
-	validates :phone, precence: true
-	validates :datestamp, precence: true
-	validates :color, precence: true
+	validates :name, presence: true
+	validates :phone, presence: true
+	validates :datestamp, presence: true
+	validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -38,12 +38,16 @@ end
 post '/visit' do
 	#insert info into DB info about appointment:
 	c = Client.new params[:client]
-	c.save #use validation in class above,if error then NO save
+	
+	if c.save #use validation in class above,if error then NO save
 
-	@title = "Thank you!"
-	@message = Client.all
+		@title = "Thank you!"
+		@message = Client.all
 
-	erb :message
+		erb :message
+	else
+		erb "<h2>Error!</h2>"
+	end
 end
 
 get '/contacts' do
