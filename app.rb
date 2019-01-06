@@ -31,21 +31,8 @@ get '/visit' do
 end
 
 post '/visit' do
-	# #insert info into DB info about appointment-my solution:
-	# Visit.find_or_create_by(
-	# 	user_name: params[:user_name],
-	# 	phone: params[:phone],
-	# 	date_time: params[:date_time],
-	# 	barber: params[:barber],
-	# 	color: params[:color])
-
 	#insert info into DB info about appointment:
-	c = Client.new
-	c.name = params[:user_name]
-	c.phone = params[:phone]
-	c.datestamp = params[:date_time]
-	c.barber = params[:barber]
-	c.color = params[:color]
+	c = Client.new params[:client]
 	c.save
 
 	@title = "Thank you!"

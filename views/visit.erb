@@ -5,23 +5,22 @@
 
   <div class="form-group">
     <label>Your name</label>
-    <input name="user_name" type="text" class="form-control" placeholder="Your name" value="<%= @user_name %>">
+    <input name="client[name]" type="text" class="form-control" placeholder="Your name" value="">
   </div>
 
   <div class="form-group">
     <label>Your phone</label>
-    <input name="phone" type="text" class="form-control" placeholder="Your phone" value="<%= @phone %>">
+    <input name="client[phone]" type="text" class="form-control" placeholder="Your phone" value="">
   </div>
 
   <div class="form-group">
     <label>Date and time?</label>
-    <!-- autocomplete history overlaps plugin - trying to turn it off  -->
-    <input id="datetimepicker" name="date_time" autocomplete="off" type="text" class="form-control" placeholder="Date and time" value="<%= @date_time %>">
+    <input id="datetimepicker" name="client[datestamp]" autocomplete="off" type="text" class="form-control" placeholder="Date and time" value="">
   </div>
 
-  <div class="form-group">
+<!--   <div class="form-group">
     <label>Your barber:</label>    
-    <select class="form-control" name="barber">
+    <select class="form-control" name="client[barber]">
 
       <% @barbers.each do |item| %>
          <option <%= @barber == item['name'] ? 'selected' : '' %>>
@@ -29,11 +28,11 @@
       <% end %>
 
     </select>
-  </div>
+  </div> -->
 
   <div class="form-group">
     <label>What color do you like?</label>
-    <select id="color"  name="color">
+    <select id="color"  name="client[color]">
       <option value="#7bd148">Green</option>
       <option value="#fbd75b">Yellow</option>
       <option value="#ff887c">Red</option>
