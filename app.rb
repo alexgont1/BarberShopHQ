@@ -6,6 +6,11 @@ require 'sinatra/activerecord'
 set :database, "sqlite3:barbershop.db"
 
 class Client < ActiveRecord::Base
+	#validation of input (using method 'save'):
+	validates :name, precence: true
+	validates :phone, precence: true
+	validates :datestamp, precence: true
+	validates :color, precence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -33,7 +38,7 @@ end
 post '/visit' do
 	#insert info into DB info about appointment:
 	c = Client.new params[:client]
-	c.save
+	c.save #use validation in class above,if error then NO save
 
 	@title = "Thank you!"
 	@message = Client.all
